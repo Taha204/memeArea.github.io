@@ -8,7 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/interactjs@1.10.11/dist/interact.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
+        
         body {
             font-family: 'Comic Neue', cursive;
             background: linear-gradient(to right, #f9f9f9, #99ccff, #cc99ff);
@@ -68,7 +68,9 @@
             font-weight: bold;
         }
         #secondary-text-overlay {
-            font-size: 1em;
+            font-size: 2em;
+            font-weight: bold;
+
             margin-top: 0.5em;
             bottom: 80px;
         }
@@ -282,8 +284,8 @@
     document.getElementById('secondary-text').value = '';  // Efface le champ de texte secondaire
 
     // Réinitialiser les éléments de superposition de texte (overlay)
-    document.getElementById('top-text-overlay').textContent = 'Texte Principal';  // Remet le texte par défaut
-    document.getElementById('secondary-text-overlay').textContent = 'Texte Secondaire';  // Remet le texte secondaire par défaut
+    document.getElementById('top-text-overlay').textContent = 'Texte 1';  // Remet le texte par défaut
+    document.getElementById('secondary-text-overlay').textContent = 'Texte 2';  // Remet le texte secondaire par défaut
 
     // Réinitialiser la position des overlays de texte si nécessaire
     document.getElementById('top-text-overlay').style.transform = 'translate(0px, 30px)';  // Remettre la position initiale
@@ -302,7 +304,7 @@
 <body class="min-h-screen flex flex-col items-center">
 
   
-  <header class="bg-slate-200 flex items-center justify-between p-4 w-full shadow-md">
+  <header class="bg-slate-200 flex items-center justify-between fixed p-4 w-full shadow-md z-10">
     <div class="flex items-center space-x-2 sm:space-x-3">
       <img src="logo.jpg" alt="Logo" class="w-8 sm:w-10 h-8 sm:h-10 rounded-full">
       <span class="text-lg sm:text-2xl font-bold text-gray-800">MemeAREA</span>
@@ -333,17 +335,17 @@
     </div>
    
   </header>
-   <!-- Menu mobile -->
-   <div id="mobile-menu" class="sm:hidden hidden flex-col space-y-2 items-center p-4 bg-gradient-to-r from-[#6699FF] to-[#99CCFF] w-full">
-    <button onclick="redirectToAcceuil()()" class="bg-[#FFCCFF] text-gray-800 font-semibold px-2 py-1 rounded-lg shadow hover:bg-[#FF99CC] hover:text-white w-full text-center">Acceuil</button>
-    <button onclick="redirectToGenerate()" class="bg-white text-[#6699FF] font-semibold px-2 py-1 rounded-lg shadow hover:bg-[#336699] hover:text-white w-full text-center">Créer</button>
-    <button onclick="redirectToProfile()" class="text-gray-700 font-medium text-sm sm:text-base hover:text-white w-full text-center">Mon espace</button>
-    <button onclick="showSection('parametres')" class="text-gray-700 font-medium text-sm sm:text-base hover:text-white w-full text-center">Paramètres</button>
-  </div>
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="sm:hidden hidden flex-col space-y-2 items-center p-4 bg-gradient-to-r from-gray-500 to-gray-300 fixed top-16 left-0 w-full z-40">
+    <button onclick="redirectToAcceuil()" class="bg-[#FFCCFF] text-gray-800 font-semibold px-2 py-1 rounded-lg shadow hover:bg-[#FF99CC] hover:text-white w-full text-center">Acceuil</button>
+  <button onclick="redirectToGenerate()" class="bg-[#FFCCFF] text-gray-800 font-semibold px-2 py-1 rounded-lg shadow hover:bg-[#FF99CC] hover:text-white w-full text-center">Créer</button>
+  <button onclick="redirectToProfile()" class="text-gray-700 font-medium text-sm sm:text-base hover:text-white w-full text-center">Mon espace</button>
+  <button onclick="showSection('parametres')" class="text-gray-700 font-medium text-sm sm:text-base hover:text-white w-full text-center">Paramètres</button>
+</div>
 
     <!-- Main Content -->
     <main class="flex-grow p-8 space-y-6">
-        <h2 class="text-5xl font-extrabold text-center text-[#5784BB]">Meme Generator</h2>
+        <h2 class="text-5xl font-extrabold text-center text-[#5784BB] mt-24">Meme Generator</h2>
 
         <!-- Meme Preview Section -->
         <div class="flex flex-col md:flex-row gap-8 justify-center items-center">
@@ -351,8 +353,8 @@
           <div  id="text-overlay-container" class="image-container w-full md:w-1/2 p-4 bg-gray-200 rounded-lg shadow-lg fun-shadow">
               <img id="meme-image" src="20.png" alt="Meme" class="w-full max-w-md h-auto rounded-lg shadow-xl mx-auto">
               <!-- Zones pour le texte principal et le texte secondaire -->
-        <div id="top-text-overlay" class="text-overlay" style="top: 60px;">Texte Principal</div>
-        <div id="secondary-text-overlay" class="text-overlay" >Texte Secondaire</div>
+        <div id="top-text-overlay" class="text-overlay" style="top: 60px;">Texte 1</div>
+        <div id="secondary-text-overlay" class="text-overlay" >Texte 2</div>
           </div>
 
             <!-- Meme Controls -->
@@ -390,16 +392,16 @@
                 </script>
 
 <div class="space-y-4">
-  <label class="block text-gray-700 font-bold">Texte principal</label>
+  <label class="block text-gray-700 font-bold">Texte 1</label>
   <input type="text" id="top-text" class="w-full p-3 cool-input text-gray-800 bg-gray-100 rounded-lg shadow-sm">
   
-  <label class="block text-gray-700 font-bold">Couleur du texte principal</label>
+  <label class="block text-gray-700 font-bold">Couleur du texte 2</label>
   <input type="color" id="top-text-color" value="#FFFFFF" class="w-full p-3 cool-input text-gray-800 bg-gray-100 rounded-lg shadow-sm">
   
-  <label class="block text-gray-700 font-bold">Texte secondaire</label>
+  <label class="block text-gray-700 font-bold">Texte 2</label>
   <input type="text" id="secondary-text" class="w-full p-3 cool-input text-gray-800 bg-gray-100 rounded-lg shadow-sm">
   
-  <label class="block text-gray-700 font-bold">Couleur du texte secondaire</label>
+  <label class="block text-gray-700 font-bold">Couleur du texte 2</label>
   <input type="color" id="secondary-text-color" value="#FFFFFF" class="w-full p-3 cool-input text-gray-800 bg-gray-100 rounded-lg shadow-sm">
 </div>
 

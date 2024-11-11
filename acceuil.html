@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   
   <style>
+    
     body {
     font-family: 'Comic Neue', cursive;
     background: linear-gradient(to right, #f9f9f9, #99ccff, #cc99ff);
@@ -150,7 +151,7 @@ function highlightButton(clickedButton) {
 </head>
 <body class=" min-h-screen p-0 m-0">
   <!-- Header -->
-  <header class="bg-slate-200 flex items-center justify-between p-4 w-full shadow-md">
+  <header class="bg-slate-200 height flex items-center justify-between p-4 w-full shadow-md fixed top-0 left-0 z-10">
     <div class="flex items-center space-x-2 sm:space-x-3">
       <img src="logo.jpg" alt="Logo" class="w-8 sm:w-10 h-8 sm:h-10 rounded-full">
       <span class="text-lg sm:text-2xl font-bold text-gray-800">MemeAREA</span>
@@ -170,7 +171,7 @@ function highlightButton(clickedButton) {
     </button>
   
     <!-- Desktop Menu Buttons -->
-    <div class="hidden sm:flex items-center space-x-3 sm:space-x-4">
+    <div class="hidden  sm:flex items-center space-x-3 sm:space-x-4">
       <button class="text-gray-700 hover:text-white"><i class="fas fa-cog text-xl sm:text-2xl"></i></button>
       <button onclick="redirectToSignup()" class="bg-[#FFCCFF] text-gray-800 font-semibold px-2 md:px-4 py-1 md:py-2 rounded-lg shadow hover:bg-[#FF99CC] hover:text-white">Acceuil</button>
       <button onclick="redirectToGenerate()" class="bg-white text-[#6699FF] font-semibold px-2 md:px-4 py-1 md:py-2 rounded-lg shadow hover:bg-[#336699] hover:text-white">Créer</button>
@@ -179,18 +180,24 @@ function highlightButton(clickedButton) {
         <button onclick="redirectToProfile()" class="text-gray-700 font-medium text-sm sm:text-base hover:text-white">Mon espace</button>
       </div>
     </div>
-   
-  </header>
-   <!-- Menu mobile -->
-   <div id="mobile-menu" class="sm:hidden hidden flex-col space-y-2 items-center p-4 bg-gradient-to-r from-[#6699FF] to-[#99CCFF]">
-    <button onclick="redirectToSignup()" class="bg-[#FFCCFF] text-gray-800 font-semibold px-2 py-1 rounded-lg shadow hover:bg-[#FF99CC] hover:text-white w-full text-center">Acceuil</button>
-    <button onclick="redirectToGenerate()" class="bg-white text-[#6699FF] font-semibold px-2 py-1 rounded-lg shadow hover:bg-[#336699] hover:text-white w-full text-center">Créer</button>
-    <button onclick="redirectToProfile()" class="text-gray-700 font-medium text-sm sm:text-base hover:text-white w-full text-center">Mon espace</button>
-    <button onclick="showSection('parametres')" class="text-gray-700 font-medium text-sm sm:text-base hover:text-white w-full text-center">Paramètres</button>
-  </div>
-  <h2 class="text-center text-2xl sm:text-3xl font-bold text-gray-700 mt-4">
-    Le meilleur des memes, tout au même endroit
-  </h2>
+</header>
+
+<!-- Menu mobile -->
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="sm:hidden hidden flex-col space-y-2 items-center p-4 bg-gradient-to-r from-gray-500 to-gray-300 fixed top-16 left-0 w-full z-40">
+  <button onclick="redirectToAcceuil()" class="bg-[#FFCCFF] text-gray-800 font-semibold px-2 py-1 rounded-lg shadow hover:bg-[#FF99CC] hover:text-white w-full text-center">Acceuil</button>
+  <button onclick="redirectToGenerate()" class="bg-[#FFCCFF] text-gray-800 font-semibold px-2 py-1 rounded-lg shadow hover:bg-[#FF99CC] hover:text-white w-full text-center">Créer</button>
+  <button onclick="redirectToProfile()" class="text-gray-700 font-medium text-sm sm:text-base hover:text-white w-full text-center">Mon espace</button>
+  <button onclick="showSection('parametres')" class="text-gray-700 font-medium text-sm sm:text-base hover:text-white w-full text-center">Paramètres</button>
+</div>
+
+
+
+<!-- Adjusted Title -->
+<h2 class="text-center text-2xl sm:text-3xl font-bold text-gray-700 mt-20 sm:mt-24">
+  Le meilleur des memes, tout au même endroit
+</h2>
+
   <!-- Main Content -->
   <main class="flex-grow p-4 sm:p-6 pt-4 sm:pt-6">
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 m-8">
