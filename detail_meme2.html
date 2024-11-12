@@ -219,6 +219,24 @@ function shareMeme(button) {
     icon.classList.add('text-yellow-500');     // Revenir à la couleur claire
   }
 }
+function showSection(sectionId) {
+      // Hide all sections
+      document.querySelectorAll('.content-section').forEach(section => {
+        section.classList.add('hidden');
+      });
+      // Show the selected section
+      document.getElementById(sectionId).classList.remove('hidden');
+    }
+
+    function toggleMenu() {
+      const menu = document.getElementById("mobile-menu");
+      menu.classList.toggle("hidden");
+    }
+
+    function toggleSettings() {
+      // Hide main content and show settings section
+      showSection('parametres');
+    }
 
   </script>
   <style>
@@ -226,6 +244,8 @@ function shareMeme(button) {
     font-family: 'Comic Neue', cursive;
     background: linear-gradient(to right, #f9f9f9, #99ccff, #cc99ff);
 }
+
+
   </style>
 </head>
 <body class=" min-h-screen p-0 m-0">
