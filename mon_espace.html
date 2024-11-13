@@ -62,9 +62,15 @@
 
     // Fonction pour afficher/masquer le menu mobile
     function toggleMenu() {
-      const menu = document.getElementById("mobile-menu");
-      menu.classList.toggle("hidden");
-    }
+  const menu = document.getElementById("mobile-menu");
+  menu.classList.toggle("hidden");
+  
+  // Ne masquer que le menu mobile, pas les sections principales
+  document.querySelectorAll('.content-section').forEach(section => {
+    section.classList.remove('hidden'); // Garder toutes les sections visibles
+  });
+}
+
     function switchButton(sectionId, button) {
     // Masquer toutes les sections de contenu
     document.querySelectorAll('.content-section').forEach(section => {
@@ -131,13 +137,15 @@ function highlightButton(clickedButton) {
     clickedButton.classList.add('bg-blue-500', 'text-white');
   }
   function showSection(sectionId) {
-      // Hide all sections
-      document.querySelectorAll('.content-section').forEach(section => {
+    // Masquer toutes les sections de contenu sauf la section des créations
+    document.querySelectorAll('.content-section').forEach(section => {
+      if (section.id !== 'creations') { // Garder "Mes Créations" visible
         section.classList.add('hidden');
-      });
-      // Show the selected section
-      document.getElementById(sectionId).classList.remove('hidden');
-    }
+      }
+    });
+    // Afficher la section sélectionnée
+    document.getElementById(sectionId).classList.remove('hidden');
+}
 
     function toggleMenu() {
       const menu = document.getElementById("mobile-menu");

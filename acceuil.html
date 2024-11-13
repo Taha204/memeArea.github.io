@@ -30,12 +30,12 @@
 
 
     function showMemeDetailss() {
-        window.location.href = 'detail_meme2.html';
+        window.location.href = 'detail_meme4.html';
     }
 
 
     function showMemeDetails() {
-        window.location.href = 'detail_meme.html';
+        window.location.href = 'detail_meme3.html';
     }
 
   
@@ -156,10 +156,33 @@ function highlightButton(clickedButton) {
       document.getElementById(sectionId).classList.remove('hidden');
     }
 
-    function toggleMenu() {
-      const menu = document.getElementById("mobile-menu");
-      menu.classList.toggle("hidden");
-    }
+    document.addEventListener('DOMContentLoaded', function() {
+            const settingsButton = document.getElementById('settingsButton');
+            const settingsMenu = document.getElementById('settingsMenu');
+
+            // Fonction pour afficher/fermer le menu
+            function toggleMenu() {
+                const isMenuVisible = settingsMenu.classList.contains('hidden');
+                if (isMenuVisible) {
+                    settingsMenu.classList.remove('hidden');
+                } else {
+                    settingsMenu.classList.add('hidden');
+                }
+            }
+
+            // Afficher ou masquer le menu lorsqu'on clique sur le bouton
+            settingsButton.addEventListener('click', function(event) {
+                toggleMenu();
+                event.stopPropagation();  // Empêche la propagation de l'événement pour éviter que le menu ne se ferme immédiatement
+            });
+
+            // Fermer le menu si on clique n'importe où en dehors du menu ou du bouton
+            document.addEventListener('click', function(event) {
+                if (!settingsButton.contains(event.target) && !settingsMenu.contains(event.target)) {
+                    settingsMenu.classList.add('hidden');
+                }
+            });
+        });
 
     function toggleSettings() {
       // Hide main content and show settings section
